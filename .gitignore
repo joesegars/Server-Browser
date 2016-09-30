@@ -1,0 +1,15 @@
+.vs
+.svn
+.idea
+.settings
+.externalToolBuilders
+.bin
+.suo
+local.properties
+projectFilesBackup
+bin
+gen
+obj
+build
+node_modules
+dist

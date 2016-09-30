@@ -1,0 +1,353 @@
+﻿/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*==================================================================*/
+
+
+body {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('../images/background.png');
+}
+
+.directory-item {
+    cursor: pointer;
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.directory-item .ui-icon,
+.file-item .ui-icon {
+    margin-right: 5px;
+}
+
+.file-item {
+    width: 400px;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-size {
+    margin-left: 400px;
+    width: 110px;
+    text-align: right;
+}
+
+.app-outer-container {
+    width: 1000px; 
+    margin: 0 auto;
+}
+
+.app-inner-container {
+    width: 1000px;
+    height: 750px;
+    position: absolute;
+    top: 50%; 
+    margin-top: -375px; 
+    border: solid 1px #C6C6C6;
+    background-color: white;
+    display: flex;
+    flex-flow: column;
+}
+
+.toolbar {
+    border-bottom: solid 1px #C6C6C6;
+    padding: 10px 15px;
+}
+
+.toolbar button {
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.toolbar button img {
+    float: left; 
+    height: 20px; 
+    margin-top: -2px; 
+    margin-right: 5px;
+}
+
+.toolbar button img.add-folder-btn {
+    margin-top: -1px; 
+}
+
+.search-container {
+    height: 30px;
+    float: right;
+}
+
+.search-text-field {
+    height: 30px;
+    width: 250px;
+    padding: 6px;
+    border: 1px solid #C6C6C6;
+    font-size: 12px;
+    color: #000;
+    background-color: #F3F3F3;
+    box-sizing: border-box;
+    margin-right: -4px;
+}
+
+.search-button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    vertical-align: middle;
+    background: url('../images/search-icon.png') no-repeat;
+    background-position: center;
+    background-size: 20px;
+    border: 1px solid #C6C6C6;
+    border-left: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.directory-path-display {
+    border-bottom: solid 1px #C6C6C6;
+    height: 30px;
+    padding: 10px 15px;
+}
+
+.directory-table {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.status-bar {
+    height: 50px;
+    line-height: 50px;
+    border-top: solid 1px #C6C6C6;
+    padding: 0 15px;
+}
+
+.error {
+    height: 50px;
+    line-height: 40px;
+    border-top: solid 1px #C6C6C6;
+    padding: 5px;
+    position: relative;
+}
+
+.error .ui-state-error {
+    height: 40px;
+}
+
+.error .ui-state-error img {
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.error .ui-state-error span {
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.status-bar span {
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:hover,
+tr:nth-child(even):hover {
+    background-color: #EBF3FD;
+}
+
+/*tr:nth-child(even) {
+    background-color: #F3F3F3;
+}*/
+
+.text-right {
+    text-align: right;
+    padding-right: 50px;
+}
+
+.file-icon {
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.file-name {
+    display: block;
+    margin-left: 30px;
+    width: 750px; 
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.breadcrumbs {
+    height: 30px;
+}
+
+.breadcrumbs ul li {
+ list-style:none; 
+}
+
+.breadcrumbs ul li a {
+ display: block;
+ float: left;
+ height: 30px;
+ line-height: 30px;
+ background: #3498db;
+ text-align: center;
+ padding: 0 15px 0 15px;
+ position: relative;
+ margin: 0 15px 0 0; 
+ font-size: 16px;
+ text-decoration: none;
+ color: #fff;
+}
+
+.breadcrumbs ul li a:after {
+    content: "";  
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 10px solid #3498db;
+    position: absolute;
+    right: -10px;
+    top: 0;   
+}
+
+.breadcrumbs ul li a:before {
+    content: "";
+    position: absolute;
+    border-width: 15px 0 15px 10px;
+    border-style: solid;
+    border-color: #3498db #3498db #3498db transparent;
+    left: -10px;
+    top: 0;     
+}
+
+.breadcrumbs ul li:first-child a:before {
+    display: none;
+}
+
+.breadcrumbs ul li:first-child a {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 1px;
+}
+
+.breadcrumbs ul li a:hover {
+  background: #5172B8;
+}
+
+.breadcrumbs ul li a:hover::before {
+  border-color: #5172B8 #5172B8 #5172B8 transparent;    
+}
+
+.breadcrumbs ul li a:hover::after {
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 10px solid #5172B8;        
+}
+
+.add-folder-dialog {
+    min-height: 0px !important;
+}
+
+.delete-item-confirmation {
+    min-height: 0px !important;
+    min-width: 280px !important;
+}
+
+#contextMenu { 
+    position: absolute; 
+    display: none;
+    z-index: 11;
+}
+
+.selected {
+    background-color: #5172B8 !important;
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.odd {
+    background-color: #F3F3F3;
+}

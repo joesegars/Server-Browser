@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>File Browser Test Project</title>
+    <link rel="stylesheet" href="client/css/app.css" />
+    <link rel="stylesheet" href="client/lib/jquery-ui-1.12.0/jquery-ui.min.css" />
+    <link rel="stylesheet" href="client/lib/jquery-ui-1.12.0/jquery-ui.theme.min.css" />
+</head>
+<body>
+    <!-- Main App -->
+    <div class="app-outer-container">
+        <div class="app-inner-container">
+            <div class="toolbar">
+                <button class="ui-button ui-widget ui-corner-all" data-bind="click: showAddFolderDialog"><img src="client/images/add-folder-icon.png" class="add-folder-btn" />Add Folder</button>
+                <button class="ui-button ui-widget ui-corner-all" data-bind="click: refreshFolder"><img src="client/images/refresh-icon.png" />Refresh</button>
+                <div class="search-container">
+                    <input class="search-text-field" type="text" placeholder="Search" data-bind="value: searchQuery, valueUpdate: 'keyup'" autocomplete="off">
+                    <div class="search-button"></div>
+                </div>
+            </div>
+            <div class="directory-path-display">
+                <div class="breadcrumbs" style="display: none" data-bind="visible: true">
+                    <ul data-bind="foreach: path">
+                        <li><a href="#" data-bind="text: $data, click: $parent.onBreadcrumbClicked"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="directory-table" >
+                <table style="width:100%">
+                    <tbody class="please-work" data-bind="foreach: directories, visible: true" style="display: none;">
+                        <tr style="cursor: pointer;" data-role="folder" data-bind="click: $parent.browseFolder">
+                            <td>
+                                <div style="position: relative;"><img src="client/images/folder-icon.png" class="file-icon" /><span class="file-name ellipsis" data-bind="text: Name, attr: {title: Name}"></span></div>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                    <tbody class="please-work-again" data-bind="foreach: files, visible: true" style="display: none;">
+                        <tr data-role="file">
+                            <td>
+                                <div style="position: relative;"><img src="client/images/file-icon.png" class="file-icon" /><span class="file-name ellipsis" data-bind="text: Name, attr: {title: Name}"></span></div>
+                            </td>
+                            <td class="text-right"><span data-bind="fileSize: SizeInBytes"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div data-bind="visible: !isError()" class="status-bar">
+                <span data-bind="text: directoryCountText"></span>
+                <span data-bind="text: fileCountText"></span>
+                <span data-bind="text: totalFileSizeText"></span>
+            </div>
+            <div data-bind="visible: isError()" class="error ui-widget" style="display: none;">
+                <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+                    <p>
+                        <img src="client/images/error-icon.png" />
+                        <span data-bind="text: errorMessage"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Folder Dialog -->
+    <div class="add-folder-dialog" title="Add Folder" style="display: none;">
+        <form>
+            <input class="search-text-field" style="width: 100%; margin-bottom: 0.5em;" placeholder="Folder Name" type="text" data-bind="textInput: newFolderName">
+            <button style="float: right;" class="ui-button ui-widget ui-corner-all" data-bind="click: createFolder">Submit</button>
+            <button style="float: right; margin-right: 10px;" class="ui-button ui-widget ui-corner-all" data-bind="click: closeCreateFolderDialog">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Delete Item Confirmation -->
+    <div class="delete-item-confirmation" title="Delete Item" style="display: none; width: 280px;">
+        <form>
+            <p style="padding-bottom: 0.5em;">Are you sure you want to delete this item? The folder along with all contents will be deleted. This action cannot be undone.</p>
+            <button style="float: right;" class="ui-button ui-widget ui-corner-all" data-bind="click: deleteItem">Delete</button>
+            <button style="float: right; margin-right: 10px;" class="ui-button ui-widget ui-corner-all" data-bind="click: closeDeleteItemConfirmation">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Right Click Context Menu -->
+    <ul id="contextMenu" style="display: none;">
+        <li data-bind="css: { 'ui-state-disabled': !downloadEnabled() }, click: downloadFile"><div><span class="ui-icon ui-icon-disk"></span>Download</div></li>
+        <li data-bind="click: showDeleteItemConfirmation"><div><span class="ui-icon ui-icon-zoomin"></span>Delete</div></li>
+    </ul>
+
+    <!-- Scripts -->
+    <script type='text/javascript' src="client/lib/jquery-3.1.0.min.js"></script>
+    <script type='text/javascript' src="client/lib/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+    <script type='text/javascript' src="client/lib/knockout-3.4.0.js"></script>
+    <script type='text/javascript' src="client/js/Services.js"></script>
+    <script type='text/javascript' src="client/js/Path.js"></script>
+    <script type='text/javascript' src="client/js/DirectoryContentsViewModel.js"></script>
+    <script type='text/javascript' src="client/js/app.js"></script>
+    <script type='text/javascript' src="client/js/FileSizeBinding.js"></script>
+</body>
+</html>
