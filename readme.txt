@@ -1,4 +1,6 @@
-﻿* App features
+﻿To run the project, open solution in Visual Studio 2015. Build the project then either deploy to IIS or use the built in IIS express server to open the index.html page. Front end code is located in the TestProject/client directory
+
+* App features
 
 - Configurable home directory
 - View directory
